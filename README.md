@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+# ego
+集众多开源包实现的简单易用又强大的微服务golang框架。
 
-You can use the [editor on GitHub](https://github.com/ebar-go/ebar-go.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## 项目地址
 ```
+https://github.com/ebar-go/ego
+```
+欢迎大家一起讨论，参与。
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## 特性
+- 支持http,websocket服务
+- 丰富的组件：配置项，数据库，Redis，日志管理器，定时任务，事件，Http客户端，参数校验器等
+- 丰富的中间件：全局唯一ID，请求日志，跨域，JWT校验，Recover等
+- 常用的工具：数组，事件，字符串，Json，数字等
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ebar-go/ebar-go.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## TODO
+- 升级gorm到2.0
