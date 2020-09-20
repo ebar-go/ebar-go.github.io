@@ -459,9 +459,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.5" data-path="string.html">
+        <li class="chapter " data-level="1.6.5" data-path="../util/string.md">
             
-                <a href="string.html">
+                <span>
             
                     
                     1.4.5.字符串
@@ -472,9 +472,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="number.html">
+        <li class="chapter " data-level="1.6.6" data-path="../util/number.md">
             
-                <a href="number.html">
+                <span>
             
                     
                     1.4.6.数字
@@ -535,7 +535,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="122redis">1.2.2.Redis</h1>
+                                <h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
+<p>redis&#x7EC4;&#x4EF6;&#x662F;&#x57FA;&#x4E8E;<code>https://github.com/go-redis/redis</code>&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<h2 id="&#x521D;&#x59CB;&#x5316;">&#x521D;&#x59CB;&#x5316;</h2>
+<p>&#x4E00;&#x822C;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x5E93;&#x662F;&#x5728;main.go&#x91CC;&#x7684;init&#x51FD;&#x6570;&#xFF0C;&#x8FDE;&#x63A5;redis&#x653E;&#x5728;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x9879;&#x6210;&#x529F;&#x540E;&#x3002;</p>
+<pre><code class="lang-go">
+<span class="hljs-keyword">func</span> init()  {
+    <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x914D;&#x7F6E;</span>
+    egu.SecurePanic(app.Config().LoadFile(<span class="hljs-string">&quot;app.yaml&quot;</span>))
+
+    <span class="hljs-comment">// &#x8FDE;&#x63A5;redis</span>
+    egu.SecurePanic(app.Redis().Connect()) <span class="hljs-comment">// &#x5982;&#x679C;&#x662F;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;ConnectCluster(),&#x4E8C;&#x9009;&#x4E00;</span>
+}
+</code></pre>
+<h2 id="&#x64CD;&#x4F5C;">&#x64CD;&#x4F5C;</h2>
+<pre><code class="lang-go"><span class="hljs-comment">//&#x3000;&#x5199;&#x5165;&#x4E00;&#x4E2A;key&#x4E3A;hello,&#x503C;&#x4E3A;world</span>
+<span class="hljs-keyword">if</span> err := app.Redis().Set(<span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-string">&quot;world&quot;</span>, time.Second); err != <span class="hljs-literal">nil</span> {
+    <span class="hljs-keyword">return</span> err
+}
+<span class="hljs-comment">// &#x83B7;&#x53D6;redis&#x7684;&#x6570;&#x636E;</span>
+fmt.Println(app.Redis().Get(<span class="hljs-string">&quot;hello&quot;</span>).Result())
+</code></pre>
 
                                 
                                 </section>
@@ -579,7 +599,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"next":{"title":"1.2.4.日志","level":"1.4.4","depth":2,"path":"component/log.md","ref":"component/log.md","articles":[]},"previous":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"path":"component/database.md","ref":"component/database.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/redis.md","mtime":"2020-09-16T14:42:01.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-17T15:17:51.650Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"next":{"title":"1.2.4.日志","level":"1.4.4","depth":2,"path":"component/log.md","ref":"component/log.md","articles":[]},"previous":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"path":"component/database.md","ref":"component/database.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/redis.md","mtime":"2020-09-20T09:19:38.830Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-20T09:39:52.621Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

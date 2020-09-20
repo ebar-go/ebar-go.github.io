@@ -459,9 +459,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.5" data-path="string.html">
+        <li class="chapter " data-level="1.6.5" data-path="../util/string.md">
             
-                <a href="string.html">
+                <span>
             
                     
                     1.4.5.字符串
@@ -472,9 +472,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="number.html">
+        <li class="chapter " data-level="1.6.6" data-path="../util/number.md">
             
-                <a href="number.html">
+                <span>
             
                     
                     1.4.6.数字
@@ -535,7 +535,167 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="121&#x6570;&#x636E;&#x5E93;">1.2.1.&#x6570;&#x636E;&#x5E93;</h1>
+                                <h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
+<p>&#x6570;&#x636E;&#x5E93;&#x7EC4;&#x4EF6;&#x662F;&#x57FA;&#x4E8E;<code>https://github.com/go-gorm/gorm</code>&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x5B9E;&#x73B0;&#x4E86;&#x591A;&#x6570;&#x636E;&#x5E93;&#x94FE;&#x63A5;&#x3001;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x7B49;&#x529F;&#x80FD;&#x3002;&#x7A0D;&#x540E;&#x5347;&#x7EA7;&#x4E3A;gorm2.0</p>
+<h2 id="&#x521D;&#x59CB;&#x5316;">&#x521D;&#x59CB;&#x5316;</h2>
+<p>&#x4E00;&#x822C;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x5E93;&#x662F;&#x5728;main.go&#x91CC;&#x7684;init&#x51FD;&#x6570;&#xFF0C;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#x653E;&#x5728;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x9879;&#x6210;&#x529F;&#x540E;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> init()  {
+    <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x914D;&#x7F6E;</span>
+    egu.SecurePanic(app.Config().LoadFile(<span class="hljs-string">&quot;app.yaml&quot;</span>))
+
+    <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#x5E93;</span>
+    egu.SecurePanic(app.InitDB())
+}
+</code></pre>
+<h2 id="&#x8868;&#x7ED3;&#x6784;">&#x8868;&#x7ED3;&#x6784;</h2>
+<pre><code class="lang-sql"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">users</span>;
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">users</span> (
+    <span class="hljs-keyword">id</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> primary <span class="hljs-keyword">key</span> auto_increment <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x4E3B;&#x952E;&apos;</span>,
+    email <span class="hljs-built_in">varchar</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&apos;&apos;</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x90AE;&#x7BB1;&apos;</span>,
+    <span class="hljs-keyword">password</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">32</span>) <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-string">&apos;&apos;</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x5BC6;&#x7801;&apos;</span>,
+    is_del tinyint <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x662F;&#x5426;&#x5220;&#x9664;&apos;</span>,
+    created_at <span class="hljs-built_in">int</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x521B;&#x5EFA;&#x65F6;&#x95F4;&apos;</span>,
+    updated_at <span class="hljs-built_in">int</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">null</span> <span class="hljs-keyword">default</span> <span class="hljs-number">0</span> <span class="hljs-keyword">comment</span> <span class="hljs-string">&apos;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&apos;</span>,
+    <span class="hljs-keyword">key</span> <span class="hljs-string">`idx_is_del`</span>(<span class="hljs-string">`is_del`</span>),
+    <span class="hljs-keyword">key</span> <span class="hljs-string">`idx_updated_at`</span>(<span class="hljs-string">`updated_at`</span>)
+)<span class="hljs-keyword">charset</span>=utf8mb4 <span class="hljs-keyword">comment</span>=<span class="hljs-string">&apos;&#x7528;&#x6237;&#x4FE1;&#x606F;&apos;</span>;
+</code></pre>
+<h2 id="&#x5B9A;&#x4E49;&#x5B9E;&#x4F53;">&#x5B9A;&#x4E49;&#x5B9E;&#x4F53;</h2>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> entity
+
+
+<span class="hljs-keyword">const</span> (
+    TableUser = <span class="hljs-string">&quot;users&quot;</span> <span class="hljs-comment">// &#x8868;&#x540D;</span>
+&#xFF09;
+<span class="hljs-comment">// &#x7528;&#x6237;&#x5B9E;&#x4F53;</span>
+<span class="hljs-keyword">type</span> UserEntity <span class="hljs-keyword">struct</span> {
+    mysql.BaseEntity
+    Email <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;email&quot; gorm:&quot;column:email&quot;`</span>
+    Password <span class="hljs-keyword">string</span> <span class="hljs-string">`json:&quot;-&quot; gorm:&quot;column:password&quot;`</span>
+}
+
+<span class="hljs-comment">// TableName &#x6307;&#x5B9A;&#x6A21;&#x578B;&#x7684;&#x8868;&#x540D;&#x79F0;</span>
+<span class="hljs-keyword">func</span> (UserEntity) TableName() <span class="hljs-keyword">string</span> {
+    <span class="hljs-keyword">return</span> TableUser
+}
+</code></pre>
+<h2 id="&#x5B9A;&#x4E49;dao">&#x5B9A;&#x4E49;Dao</h2>
+<ul>
+<li><p>BaseDao.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> dao
+<span class="hljs-keyword">import</span>(...)
+<span class="hljs-keyword">const</span> SoftDeleteCondition = <span class="hljs-string">&quot;is_del = 0&quot;</span> <span class="hljs-comment">// &#x8F6F;&#x5220;&#x9664;&#x6761;&#x4EF6;</span>
+<span class="hljs-comment">// &#x57FA;&#x7840;dao</span>
+<span class="hljs-keyword">type</span> BaseDao <span class="hljs-keyword">struct</span> {
+  db *gorm.DB
+}
+<span class="hljs-comment">// Unscoped &#x8F6F;&#x5220;&#x9664;</span>
+<span class="hljs-keyword">func</span> (dao *BaseDao) Unscoped() *gorm.DB {
+  <span class="hljs-keyword">return</span> dao.db.Where(<span class="hljs-string">&quot;is_del&quot;</span>, <span class="hljs-number">1</span>)
+}
+<span class="hljs-comment">// Create &#x521B;&#x5EFA;</span>
+<span class="hljs-keyword">func</span> (dao *BaseDao) Create(entity <span class="hljs-keyword">interface</span>{}) error {
+  <span class="hljs-keyword">return</span> dao.db.Create(entity).Error
+}
+<span class="hljs-comment">// Update &#x66F4;&#x65B0;</span>
+<span class="hljs-keyword">func</span> (dao *BaseDao) Update(entity <span class="hljs-keyword">interface</span>{}) error {
+  <span class="hljs-keyword">return</span> dao.db.Save(entity).Error
+}
+<span class="hljs-comment">// Delete &#x5220;&#x9664;</span>
+<span class="hljs-keyword">func</span> (dao *BaseDao) Delete(entity <span class="hljs-keyword">interface</span>{}) error {
+  <span class="hljs-keyword">return</span> dao.db.Model(entity).UpdateColumns(mysql.Columns{
+      <span class="hljs-string">&quot;is_del&quot;</span>: <span class="hljs-number">1</span>,
+  }).Error
+}
+</code></pre>
+</li>
+<li><p>UserDao.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> dao
+<span class="hljs-keyword">import</span>(...)
+<span class="hljs-keyword">type</span> userDao <span class="hljs-keyword">struct</span> {
+  BaseDao
+}
+<span class="hljs-keyword">func</span> User(db *gorm.DB) *userDao {
+  <span class="hljs-keyword">return</span> &amp;userDao{BaseDao{
+      db: db,
+  }}
+}
+<span class="hljs-comment">// GetByUsername &#x6839;&#x636E;&#x7528;&#x6237;&#x540D;&#x83B7;&#x53D6;&#x8BB0;&#x5F55;</span>
+<span class="hljs-keyword">func</span> (dao *userDao) GetByEmail(email <span class="hljs-keyword">string</span>) (*entity.UserEntity, error) {
+  query := dao.Unscoped().Table(entity.TableUser).
+      Where(<span class="hljs-string">&quot;email = ?&quot;</span>, email)
+  user := <span class="hljs-built_in">new</span>(entity.UserEntity)
+  <span class="hljs-keyword">if</span> err := query.First(user).Error; err != <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+  }
+  <span class="hljs-keyword">return</span> user, <span class="hljs-literal">nil</span>
+}
+<span class="hljs-comment">// &#x5206;&#x9875;&#x67E5;&#x8BE2;</span>
+<span class="hljs-keyword">func</span> (dao *userDao) PaginateQuery(request request.UserQueryRequest) ([]entity.UserEntity, *paginate.Pagination, error) {
+  query := dao.db.Table(entity.TableUser).Where(SoftDeleteCondition).Order(<span class="hljs-string">&quot;id desc&quot;</span>)
+  <span class="hljs-keyword">var</span> totalCount <span class="hljs-keyword">int</span>
+  <span class="hljs-keyword">if</span> err := query.Count(&amp;totalCount).Error; err != <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, err
+  }
+  pagination := paginate.Paginate(totalCount, request.CurrentPage, request.PageSize)
+  items := <span class="hljs-built_in">make</span>([]entity.UserEntity, <span class="hljs-number">0</span>)
+  <span class="hljs-keyword">if</span> err := query.Offset(pagination.GetOffset()).Limit(pagination.Limit).
+      Scan(&amp;items).Error; err != <span class="hljs-literal">nil</span> {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, err
+  }
+  <span class="hljs-keyword">return</span> items, &amp;pagination, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+</li>
+</ul>
+<h2 id="&#x4F7F;&#x7528;&#x4E8B;&#x52A1;">&#x4F7F;&#x7528;&#x4E8B;&#x52A1;</h2>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> service
+<span class="hljs-keyword">import</span>(...)
+
+<span class="hljs-keyword">type</span> userService <span class="hljs-keyword">struct</span> {}
+
+<span class="hljs-comment">// User &#x7528;&#x6237;&#x670D;&#x52A1;</span>
+<span class="hljs-keyword">func</span> User()*userService  {
+    <span class="hljs-keyword">return</span> &amp;userService{}
+}
+<span class="hljs-comment">// Register &#x6CE8;&#x518C;</span>
+<span class="hljs-keyword">func</span> (service *userService) Register(req request.UserRegisterRequest) error {
+    <span class="hljs-comment">// &#x5C06;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x5305;&#x88F9;&#x5728;Transaction&#x5185;&#x90E8;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E8B;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6574;</span>
+    err := app.DB().Transaction(<span class="hljs-keyword">func</span>(tx *gorm.DB) error {
+        userDao := dao.User(tx)
+        <span class="hljs-comment">// &#x6839;&#x636E;&#x90AE;&#x7BB1;&#x83B7;&#x53D6;&#x7528;&#x6237;&#x4FE1;&#x606F;</span>
+        user, err := userDao.GetByEmail(req.Email)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &amp;&amp; err != gorm.ErrRecordNotFound {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;&#x83B7;&#x53D6;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x5931;&#x8D25;:%v&quot;</span>, err)
+        }
+
+        <span class="hljs-comment">// &#x7528;&#x6237;&#x5DF2;&#x5B58;&#x5728;</span>
+        <span class="hljs-keyword">if</span> user != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;&#x8BE5;&#x90AE;&#x7BB1;&#x5DF2;&#x88AB;&#x6CE8;&#x518C;&quot;</span>)
+        }
+
+        now := <span class="hljs-keyword">int</span>(date.GetLocalTime().Unix())
+
+        user = <span class="hljs-built_in">new</span>(entity.UserEntity)
+        user.Email = req.Email
+        user.Password = strings.Md5(req.Pass)
+        user.CreatedAt = now
+        user.UpdatedAt = now
+
+        <span class="hljs-keyword">return</span> userDao.Create(user)
+    })
+
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> errors.New(enum.DatabaseSaveFailed, fmt.Sprintf(<span class="hljs-string">&quot;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x5931;&#x8D25;:%v&quot;</span>, err))
+    }
+
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<h2 id="&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x5E93;">&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x5E93;</h2>
+<pre><code class="lang-go">app.GetDB(<span class="hljs-string">&quot;otherDB&quot;</span>).Table(<span class="hljs-string">&quot;xxx&quot;</span>)...
+</code></pre>
 
                                 
                                 </section>
@@ -579,7 +739,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"next":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},"previous":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/database.md","mtime":"2020-09-16T14:42:01.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-17T15:17:51.650Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"next":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},"previous":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/database.md","mtime":"2020-09-20T09:19:38.834Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-20T09:39:52.621Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
