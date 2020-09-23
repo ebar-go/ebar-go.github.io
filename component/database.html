@@ -168,6 +168,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.4" data-path="../http/error.html">
+            
+                <a href="../http/error.html">
+            
+                    
+                    1.1.4.错误
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -381,15 +394,53 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
-<p>&#x6570;&#x636E;&#x5E93;&#x7EC4;&#x4EF6;&#x662F;&#x57FA;&#x4E8E;<code>https://github.com/go-gorm/gorm</code>&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x5B9E;&#x73B0;&#x4E86;&#x591A;&#x6570;&#x636E;&#x5E93;&#x94FE;&#x63A5;&#x3001;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x7B49;&#x529F;&#x80FD;&#x3002;&#x7A0D;&#x540E;&#x5347;&#x7EA7;&#x4E3A;gorm2.0</p>
+<p>&#x6570;&#x636E;&#x5E93;&#x7EC4;&#x4EF6;&#x662F;&#x57FA;&#x4E8E;<code>gorm</code>&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x73B0;&#x5DF2;&#x5347;&#x7EA7;&#x5230;2.0&#x7248;&#x672C;&#xFF0C;&#x652F;&#x6301;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x4E0E;&#x591A;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x3002;</p>
+<h2 id="&#x914D;&#x7F6E;&#x9879;">&#x914D;&#x7F6E;&#x9879;</h2>
+<ul>
+<li><p>&#x793A;&#x4F8B;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">mysql:</span>    <span class="hljs-comment"># mysql&#x914D;&#x7F6E;&#x3002;&#x652F;&#x6301;&#x591A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;</span>
+<span class="hljs-attr">maxIdleConnections:</span> <span class="hljs-number">10</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x7A7A;&#x95F2;&#x8FDE;&#x63A5;&#x6570;</span>
+<span class="hljs-attr">maxOpenConnections:</span> <span class="hljs-number">40</span>  <span class="hljs-comment"># &#x6700;&#x5927;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x6570;</span>
+<span class="hljs-attr">maxLifeTime:</span> <span class="hljs-number">8</span>          <span class="hljs-comment"># &#x8D85;&#x65F6;&#x65F6;&#x95F4;</span>
+<span class="hljs-attr">dsn:</span> root:<span class="hljs-number">123456</span>@tcp(<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">3306</span>)/demo?charset=utf8mb4   <span class="hljs-comment"># &#x4E3B;&#x8FDE;&#x63A5;</span>
+<span class="hljs-attr">other:</span>    <span class="hljs-comment"># &#x53E6;&#x5916;&#x7684;&#x5E93;&#x8FDE;&#x63A5;</span>
+<span class="hljs-attr">  sources:</span>    <span class="hljs-comment"># &#x4E3B;&#x5E93;</span>
+<span class="hljs-attr">    - root:</span><span class="hljs-number">123456</span>@tcp(<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">3307</span>)/other?charset=utf8mb4
+<span class="hljs-attr">  replicas:</span>   <span class="hljs-comment"># &#x4ECE;&#x5E93;</span>
+<span class="hljs-attr">    - root:</span><span class="hljs-number">123456</span>@tcp(<span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">3308</span>)/other?charset=utf8mb4
+<span class="hljs-attr">  tables:</span>
+<span class="hljs-bullet">    -</span> orders  <span class="hljs-comment"># gorm&#x4F1A;&#x6839;&#x636E;&#x8868;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x8FDE;&#x63A5;&#xFF0C;&#x53CA;&#x5176;&#x65B9;&#x4FBF;</span>
+</code></pre>
+</li>
+<li><p>&#x8BF4;&#x660E;</p>
+<ul>
+<li>maxIdleConnections: &#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x6700;&#x5927;&#x7A7A;&#x95F2;&#x6570;</li>
+<li>maxOpenConnections: &#x8FDE;&#x63A5;&#x6C60;&#x7684;&#x6700;&#x5927;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x6570;</li>
+<li>maxLifeTime: &#x8D85;&#x65F6;&#x65F6;&#x95F4;</li>
+<li>dsn: &#x6570;&#x636E;&#x5E93;&#x76F8;&#x5173;&#x914D;&#x7F6E;</li>
+</ul>
+</li>
+</ul>
 <h2 id="&#x521D;&#x59CB;&#x5316;">&#x521D;&#x59CB;&#x5316;</h2>
 <p>&#x4E00;&#x822C;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x5E93;&#x662F;&#x5728;main.go&#x91CC;&#x7684;init&#x51FD;&#x6570;&#xFF0C;&#x8FDE;&#x63A5;&#x6570;&#x636E;&#x5E93;&#x653E;&#x5728;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x9879;&#x6210;&#x529F;&#x540E;&#x3002;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> init()  {
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;github.com/ebar-go/ego/app&quot;</span>
+    <span class="hljs-string">&quot;github.com/ebar-go/ego/component/mysql&quot;</span>
+    <span class="hljs-string">&quot;github.com/ebar-go/egu&quot;</span>
+)
+<span class="hljs-keyword">func</span> init()  {
     <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x914D;&#x7F6E;</span>
     egu.SecurePanic(app.Config().LoadFile(<span class="hljs-string">&quot;app.yaml&quot;</span>))
 
     <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#x5E93;</span>
     egu.SecurePanic(app.InitDB())
+
+    <span class="hljs-comment">// &#x53EF;&#x9009;&#xFF0C;&#x4F7F;&#x7528;&#x96C6;&#x7FA4;&#x548C;&#x591A;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;</span>
+    egu.SecurePanic(app.DB().Use(mysql.Resolver().Register(mysql.ResolverConfig(mysql.ResolverItem{
+        Sources:  app.Config().GetStringSlice(<span class="hljs-string">&quot;mysql.other.sources&quot;</span>),
+        Replicas: app.Config().GetStringSlice(<span class="hljs-string">&quot;mysql.other.replicas&quot;</span>),
+        Tables:   app.Config().GetStringSlice(<span class="hljs-string">&quot;mysql.other.tables&quot;</span>),
+    }))))
 }
 </code></pre>
 <h2 id="&#x8868;&#x7ED3;&#x6784;">&#x8868;&#x7ED3;&#x6784;</h2>
@@ -434,10 +485,6 @@
 <span class="hljs-keyword">type</span> BaseDao <span class="hljs-keyword">struct</span> {
   db *gorm.DB
 }
-<span class="hljs-comment">// Unscoped &#x8F6F;&#x5220;&#x9664;</span>
-<span class="hljs-keyword">func</span> (dao *BaseDao) Unscoped() *gorm.DB {
-  <span class="hljs-keyword">return</span> dao.db.Where(<span class="hljs-string">&quot;is_del&quot;</span>, <span class="hljs-number">1</span>)
-}
 <span class="hljs-comment">// Create &#x521B;&#x5EFA;</span>
 <span class="hljs-keyword">func</span> (dao *BaseDao) Create(entity <span class="hljs-keyword">interface</span>{}) error {
   <span class="hljs-keyword">return</span> dao.db.Create(entity).Error
@@ -467,7 +514,7 @@
 }
 <span class="hljs-comment">// GetByUsername &#x6839;&#x636E;&#x7528;&#x6237;&#x540D;&#x83B7;&#x53D6;&#x8BB0;&#x5F55;</span>
 <span class="hljs-keyword">func</span> (dao *userDao) GetByEmail(email <span class="hljs-keyword">string</span>) (*entity.UserEntity, error) {
-  query := dao.Unscoped().Table(entity.TableUser).
+  query := dao.Table(entity.TableUser).
       Where(<span class="hljs-string">&quot;email = ?&quot;</span>, email)
   user := <span class="hljs-built_in">new</span>(entity.UserEntity)
   <span class="hljs-keyword">if</span> err := query.First(user).Error; err != <span class="hljs-literal">nil</span> {
@@ -538,9 +585,6 @@
     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
 }
 </code></pre>
-<h2 id="&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x5E93;">&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x5E93;</h2>
-<pre><code class="lang-go">app.GetDB(<span class="hljs-string">&quot;otherDB&quot;</span>).Table(<span class="hljs-string">&quot;xxx&quot;</span>)...
-</code></pre>
 
                                 
                                 </section>
@@ -584,7 +628,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"next":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},"previous":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/database.md","mtime":"2020-09-20T09:19:38.834Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-22T14:07:26.463Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.2.2.数据库","level":"1.4.2","depth":2,"next":{"title":"1.2.3.Redis","level":"1.4.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},"previous":{"title":"1.2.1.配置","level":"1.4.1","depth":2,"path":"component/config.md","ref":"component/config.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/database.md","mtime":"2020-09-23T14:51:24.339Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-23T14:52:51.960Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
