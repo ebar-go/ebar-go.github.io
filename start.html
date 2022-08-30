@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="di.html" />
+    <link rel="next" href="server/" />
     
     
     <link rel="prev" href="ChangeLog.html" />
@@ -126,33 +126,14 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="di.html">
-            
-                <a href="di.html">
-            
-                    
-                    1.1.1.依赖注入
-            
-                </a>
-            
-
-            
         </li>
     
-
-            </ul>
+        <li class="chapter " data-level="1.4" data-path="server/">
             
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="http.html">
-            
-                <a href="http.html">
+                <a href="server/">
             
                     
-                    1.2.http服务
+                    1.2.服务
             
                 </a>
             
@@ -161,12 +142,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="http/route.html">
+        <li class="chapter " data-level="1.4.1" data-path="server/http.html">
             
-                <a href="http/route.html">
+                <a href="server/http.html">
             
                     
-                    1.2.1.配置路由
+                    1.1.1.http服务
             
                 </a>
             
@@ -174,12 +155,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="http/request.html">
+        <li class="chapter " data-level="1.4.2" data-path="server/grpc.html">
             
-                <a href="http/request.html">
+                <a href="server/grpc.html">
             
                     
-                    1.2.2.请求数据
+                    1.1.2.grpc服务
             
                 </a>
             
@@ -187,38 +168,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="http/response.html">
+        <li class="chapter " data-level="1.4.3" data-path="server/complex.html">
             
-                <a href="http/response.html">
-            
-                    
-                    1.2.3.响应数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4" data-path="http/pprof.html">
-            
-                <a href="http/pprof.html">
+                <a href="server/complex.html">
             
                     
-                    1.2.4.pprof
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.5" data-path="http/swagger.html">
-            
-                <a href="http/swagger.html">
-            
-                    
-                    1.2.5.swagger
+                    1.1.3.混合服务
             
                 </a>
             
@@ -284,51 +239,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="component/log.html">
-            
-                <a href="component/log.html">
-            
-                    
-                    1.3.4.日志
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="component/event.html">
-            
-                <a href="component/event.html">
-            
-                    
-                    1.3.5.事件
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.6" data-path="component/curl.html">
+        <li class="chapter " data-level="1.5.4" data-path="component/curl.html">
             
                 <a href="component/curl.html">
             
                     
-                    1.3.6.curl
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.7" data-path="component/task.html">
-            
-                <a href="component/task.html">
-            
-                    
-                    1.3.7.定时任务
+                    1.3.4.curl
             
                 </a>
             
@@ -338,32 +254,6 @@
     
 
             </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="middleware.html">
-            
-                <a href="middleware.html">
-            
-                    
-                    1.3.中间件
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="util.html">
-            
-                <a href="util.html">
-            
-                    
-                    1.4.工具
-            
-                </a>
-            
-
             
         </li>
     
@@ -412,38 +302,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x8BF4;&#x660E;">&#x8BF4;&#x660E;</h1>
-<p>&#x672C;&#x6587;&#x5C06;&#x544A;&#x8BC9;&#x4F60;&#x5982;&#x679C;&#x5FEB;&#x901F;&#x7684;&#x4F7F;&#x7528;<code>ego</code>&#x8FD0;&#x884C;&#x8D77;&#x4E00;&#x4E2A;web&#x9879;&#x76EE;&#x3002;</p>
-<h2 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h2>
+                                <h2 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h2>
 <pre><code>go get github.com/ebar-go/ego
 </code></pre><h2 id="&#x4E3B;&#x7A0B;&#x5E8F;">&#x4E3B;&#x7A0B;&#x5E8F;</h2>
 <ul>
-<li>main.go<pre><code class="lang-go"><span class="hljs-keyword">import</span> (
+<li><p>main.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">import</span> (
 <span class="hljs-string">&quot;github.com/ebar-go/ego&quot;</span>
-<span class="hljs-string">&quot;github.com/ebar-go/ego/http/response&quot;</span>
 <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="hljs-string">&quot;net/http&quot;</span>
 )
 <span class="hljs-keyword">func</span> main() {
-  app := ego.App()
-  <span class="hljs-comment">// &#x52A0;&#x8F7D;&#x8DEF;&#x7531;</span>
-  <span class="hljs-keyword">if</span> err := app.LoadRouter(<span class="hljs-keyword">func</span> (router *gin.Engine) {
-      router.GET(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-keyword">func</span>(ctx *gin.Context) {
-        response.WrapContext(ctx).Success(<span class="hljs-literal">nil</span>)
+  aggregator := ego.NewAggregatorServer()
+
+  <span class="hljs-comment">// &#x5B9E;&#x4F8B;&#x5316;&#x4E00;&#x4E2A;http&#x670D;&#x52A1;</span>
+  httpServer := ego.NewHTTPServer(<span class="hljs-string">&quot;:8080&quot;</span>).
+      RegisterRouteLoader(<span class="hljs-keyword">func</span>(router *gin.Engine) { <span class="hljs-comment">// &#x6CE8;&#x518C;&#x8DEF;&#x7531;</span>
+          router.GET(<span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-keyword">func</span>(ctx *gin.Context) {
+              ctx.String(http.StatusOK, <span class="hljs-string">&quot;home&quot;</span>)
+          })
       })
-  }); err != <span class="hljs-literal">nil</span> {
-    log.Fatalf(<span class="hljs-string">&quot;load router failed: %v\n&quot;</span>, err)
-  }
-  <span class="hljs-comment">// &#x542F;&#x52A8;http&#x670D;&#x52A1;</span>
-    app.ServeHTTP()
-    <span class="hljs-comment">// &#x542F;&#x52A8;&#x5E94;&#x7528;</span>
-    app.Run()
+
+  aggregator.WithServer(httpServer)
+
+  aggregator.Run()
 }
 </code></pre>
 </li>
 </ul>
 <h2 id="&#x8FD0;&#x884C;">&#x8FD0;&#x884C;</h2>
 <pre><code>go run main.go
-</code></pre><p>&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x8BBF;&#x95EE;<code>http://localhost:8080/test</code></p>
+</code></pre><p>&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x8BBF;&#x95EE;<code>http://localhost:8080/</code></p>
 
                                 
                                 </section>
@@ -476,7 +365,7 @@
                 </a>
                 
                 
-                <a href="di.html" class="navigation navigation-next " aria-label="Next page: 1.1.1.依赖注入">
+                <a href="server/" class="navigation navigation-next " aria-label="Next page: 1.2.服务">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -487,7 +376,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.1.快速开始","level":"1.3","depth":1,"next":{"title":"1.1.1.依赖注入","level":"1.3.1","depth":2,"path":"di.md","ref":"di.md","articles":[]},"previous":{"title":"更新日志","level":"1.2","depth":1,"path":"ChangeLog.md","ref":"ChangeLog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"start.md","mtime":"2021-04-04T05:12:41.658Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-04T06:18:32.830Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.1.快速开始","level":"1.3","depth":1,"next":{"title":"1.2.服务","level":"1.4","depth":1,"path":"server/index.md","ref":"server/index.md","articles":[{"title":"1.1.1.http服务","level":"1.4.1","depth":2,"path":"server/http.md","ref":"server/http.md","articles":[]},{"title":"1.1.2.grpc服务","level":"1.4.2","depth":2,"path":"server/grpc.md","ref":"server/grpc.md","articles":[]},{"title":"1.1.3.混合服务","level":"1.4.3","depth":2,"path":"server/complex.md","ref":"server/complex.md","articles":[]}]},"previous":{"title":"更新日志","level":"1.2","depth":1,"path":"ChangeLog.md","ref":"ChangeLog.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"start.md","mtime":"2022-08-30T06:10:55.560Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-30T07:28:00.721Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

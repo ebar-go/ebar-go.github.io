@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.3.6.curl · GitBook</title>
+        <title>1.3.4.curl · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="task.html" />
     
-    
-    <link rel="prev" href="event.html" />
+    <link rel="prev" href="redis.html" />
     
 
     </head>
@@ -126,33 +124,14 @@
             
 
             
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.3.1" data-path="../di.html">
-            
-                <a href="../di.html">
-            
-                    
-                    1.1.1.依赖注入
-            
-                </a>
-            
-
-            
         </li>
     
-
-            </ul>
+        <li class="chapter " data-level="1.4" data-path="../server/">
             
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="../http.html">
-            
-                <a href="../http.html">
+                <a href="../server/">
             
                     
-                    1.2.http服务
+                    1.2.服务
             
                 </a>
             
@@ -161,12 +140,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../http/route.html">
+        <li class="chapter " data-level="1.4.1" data-path="../server/http.html">
             
-                <a href="../http/route.html">
+                <a href="../server/http.html">
             
                     
-                    1.2.1.配置路由
+                    1.1.1.http服务
             
                 </a>
             
@@ -174,12 +153,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../http/request.html">
+        <li class="chapter " data-level="1.4.2" data-path="../server/grpc.html">
             
-                <a href="../http/request.html">
+                <a href="../server/grpc.html">
             
                     
-                    1.2.2.请求数据
+                    1.1.2.grpc服务
             
                 </a>
             
@@ -187,38 +166,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="../http/response.html">
+        <li class="chapter " data-level="1.4.3" data-path="../server/complex.html">
             
-                <a href="../http/response.html">
-            
-                    
-                    1.2.3.响应数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.4" data-path="../http/pprof.html">
-            
-                <a href="../http/pprof.html">
+                <a href="../server/complex.html">
             
                     
-                    1.2.4.pprof
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.5" data-path="../http/swagger.html">
-            
-                <a href="../http/swagger.html">
-            
-                    
-                    1.2.5.swagger
+                    1.1.3.混合服务
             
                 </a>
             
@@ -284,51 +237,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="log.html">
-            
-                <a href="log.html">
-            
-                    
-                    1.3.4.日志
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.5" data-path="event.html">
-            
-                <a href="event.html">
-            
-                    
-                    1.3.5.事件
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.5.6" data-path="curl.html">
+        <li class="chapter active" data-level="1.5.4" data-path="curl.html">
             
                 <a href="curl.html">
             
                     
-                    1.3.6.curl
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.7" data-path="task.html">
-            
-                <a href="task.html">
-            
-                    
-                    1.3.7.定时任务
+                    1.3.4.curl
             
                 </a>
             
@@ -338,32 +252,6 @@
     
 
             </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6" data-path="../middleware.html">
-            
-                <a href="../middleware.html">
-            
-                    
-                    1.3.中间件
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7" data-path="../util.html">
-            
-                <a href="../util.html">
-            
-                    
-                    1.4.工具
-            
-                </a>
-            
-
             
         </li>
     
@@ -397,7 +285,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >1.3.6.curl</a>
+        <a href=".." >1.3.4.curl</a>
     </h1>
 </div>
 
@@ -416,17 +304,21 @@
 <p>&#x4ECB;&#x7ECD;http&#x8BF7;&#x6C42;&#x7EC4;&#x4EF6;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x3002;</p>
 <h2 id="get&#x8BF7;&#x6C42;">GET&#x8BF7;&#x6C42;</h2>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/ebar-go/ego/component&quot;</span>
+
 <span class="hljs-keyword">func</span> main() {
     <span class="hljs-keyword">var</span> address = <span class="hljs-string">&quot;http://localhost:8080/api&quot;</span>
 
+    curl := component.Provider().Curl()
     response, err := curl.Get(address)
     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         <span class="hljs-built_in">panic</span>(err)
     }
-    fmt.Println(response.String()) <span class="hljs-comment">// &#x53EF;&#x4EE5;&#x901A;&#x8FC7;response&#x83B7;&#x53D6;string&#x7C7B;&#x578B;&#x7684;&#x54CD;&#x5E94;</span>
-    fmt.Println(response.Byte()) <span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x662F;byte</span>
+    fmt.Println(response.Bytes()) <span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x662F;byte</span>
     <span class="hljs-keyword">var</span> obj <span class="hljs-keyword">struct</span>{}
-    err = response.BindJson(&amp;obj) <span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x89E3;&#x6790;&#x5230;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;</span>
+    err = response.Decode(&amp;obj) <span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;&#x89E3;&#x6790;&#x5230;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;</span>
+    response.Release() <span class="hljs-comment">// &#x91CA;&#x653E;bytes&#x6570;&#x7EC4;</span>
 }
 </code></pre>
 <h2 id="post&#x8BF7;&#x6C42;">POST&#x8BF7;&#x6C42;</h2>
@@ -447,12 +339,11 @@ response, err := curl.Post(address, strings.NewReader(params.Encode()))
 <pre><code class="lang-go">response, err := curl.Delete(address, <span class="hljs-literal">nil</span>)
 </code></pre>
 <h2 id="&#x81EA;&#x5B9A;&#x4E49;&#x8BF7;&#x6C42;">&#x81EA;&#x5B9A;&#x4E49;&#x8BF7;&#x6C42;</h2>
-<pre><code class="lang-go">request := curl.NewRequest(http.MethodPost, url, body)
-response, err := request.Send()
+<pre><code class="lang-go">request := http.NewRequest(http.MethodPost, url, body)
+response, err := curl.Send(req)
 <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
     <span class="hljs-keyword">return</span> err
 }
-fmt.Println(response.String())
 </code></pre>
 
                                 
@@ -481,14 +372,10 @@ fmt.Println(response.String())
 
             
                 
-                <a href="event.html" class="navigation navigation-prev " aria-label="Previous page: 1.3.5.事件">
+                <a href="redis.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 1.3.3.Redis">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="task.html" class="navigation navigation-next " aria-label="Next page: 1.3.7.定时任务">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -497,7 +384,7 @@ fmt.Println(response.String())
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.3.6.curl","level":"1.5.6","depth":2,"next":{"title":"1.3.7.定时任务","level":"1.5.7","depth":2,"path":"component/task.md","ref":"component/task.md","articles":[]},"previous":{"title":"1.3.5.事件","level":"1.5.5","depth":2,"path":"component/event.md","ref":"component/event.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/curl.md","mtime":"2020-09-20T09:28:26.526Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-04T06:18:32.830Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.3.4.curl","level":"1.5.4","depth":2,"previous":{"title":"1.3.3.Redis","level":"1.5.3","depth":2,"path":"component/redis.md","ref":"component/redis.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"component/curl.md","mtime":"2022-08-30T07:25:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-30T07:28:00.721Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
